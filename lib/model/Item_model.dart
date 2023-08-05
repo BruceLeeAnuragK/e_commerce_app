@@ -9,3 +9,9 @@ class ItemModel {
     required this.image,
   });
 }
+
+class ItemList {
+  final List allFoodList;
+
+  ItemList({required this.allFoodList});
+}

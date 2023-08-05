@@ -29,7 +29,7 @@ class _IntroScreenState extends State<IntroScreen> {
           children: [
             TweenAnimationBuilder(
               tween: Tween(begin: 0.0, end: pi * 2),
-              duration: Duration(seconds: 10),
+              duration: Duration(seconds: 15),
               builder: (context, val, _) {
                 return Transform.rotate(
                   angle: val,
@@ -48,14 +48,21 @@ class _IntroScreenState extends State<IntroScreen> {
                 );
               },
             ),
+            CircularProgressIndicator(
+              color: Colors.yellow.shade900,
+            ),
             TweenAnimationBuilder(
-                duration: Duration(seconds: 5),
-                tween: Tween(
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.center,
-                ),
-                builder: (context, val, _) {
-                  return Container(
+              duration: Duration(seconds: 10),
+              tween: Tween(
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
+              ),
+              builder: (context, val, _) {
+                return Align(
+                  alignment: val,
+                  child: Container(
+                    height: 100,
+                    width: 300,
                     child: Text(
                       "Food App",
                       style: TextStyle(
@@ -64,10 +71,9 @@ class _IntroScreenState extends State<IntroScreen> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                  );
-                }),
-            CircularProgressIndicator(
-              color: Colors.yellow.shade900,
+                  ),
+                );
+              },
             ),
           ],
         ),
