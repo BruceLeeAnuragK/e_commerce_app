@@ -11,42 +11,50 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Row(
-            children: [
-              IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.format_list_bulleted,
-                  color: Colors.white,
-                  size: 20,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Stack(
+              children: [
+                SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 750,
+                        width: 110,
+                        color: Colors.red,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.shopping_basket_outlined,
-                  color: Colors.grey,
-                  size: 20,
+                Padding(
+                  padding: const EdgeInsets.all(50),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.format_list_bulleted,
+                          color: Colors.amber,
+                          size: 30,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.shopping_basket_outlined,
+                          color: Colors.grey,
+                          size: 30,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
-          // Stack(
-          //   children: [
-          //     Column(
-          //       children: [
-          //         Container(
-          //           height: double.infinity,
-          //           width: 200,
-          //           color: Colors.red,
-          //         )
-          //       ],
-          //     )
-          //   ],
-          // )
-        ],
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
