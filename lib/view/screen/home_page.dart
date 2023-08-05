@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:e_commerce_app/provider/item_list_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,187 +16,373 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Consumer<ItemProvider>(
       builder: (context, provider, child) => Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Stack(
-                children: [
-                  SingleChildScrollView(
+        body: Column(
+          children: [
+            Stack(
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
                     child: Column(
                       children: [
                         Container(
-                          height: 750,
+                          height: 700,
                           width: 110,
                           color: Colors.red,
                         ),
                       ],
                     ),
                   ),
-                  Center(
-                    child: TweenAnimationBuilder(
-                        duration: Duration(milliseconds: 600),
-                        curve: Curves.bounceOut,
-                        tween: Tween(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter),
-                        builder: (context, val, _) {
-                          return Align(
-                            alignment: val,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(50),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      IconButton(
-                                        onPressed: () {},
-                                        icon: Icon(
-                                          Icons.format_list_bulleted,
-                                          color: Colors.white,
-                                          size: 30,
-                                        ),
+                ),
+                Center(
+                  child: TweenAnimationBuilder(
+                      duration: Duration(milliseconds: 600),
+                      curve: Curves.bounceOut,
+                      tween: Tween(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter),
+                      builder: (context, val, _) {
+                        return Align(
+                          alignment: val,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(50),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {},
+                                      icon: Icon(
+                                        Icons.format_list_bulleted,
+                                        color: Colors.white,
+                                        size: 30,
                                       ),
-                                      IconButton(
-                                        onPressed: () {},
-                                        icon: Icon(
-                                          Icons.shopping_basket_outlined,
-                                          color: Colors.grey,
-                                          size: 30,
-                                        ),
+                                    ),
+                                    IconButton(
+                                      onPressed: () {},
+                                      icon: Icon(
+                                        Icons.shopping_basket_outlined,
+                                        color: Colors.grey,
+                                        size: 30,
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
-                                ...provider.foodItems.map((e) {
-                                  return Stack(
-                                    alignment: Alignment(0, 0),
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(10),
-                                        child: Container(
-                                          height: provider.h,
-                                          width: provider.w,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            color: Colors.white,
-                                            boxShadow: [
-                                              BoxShadow(
-                                                blurRadius: 20,
-                                                color: Colors.grey,
-                                                offset: Offset(5, 5),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          AnimatedContainer(
-                                            duration:
-                                                Duration(milliseconds: 600),
-                                            height: 70,
-                                            width: 70,
+                              ),
+                              Container(
+                                height: 500,
+                                width: 250,
+                                child: ListView.builder(
+                                  itemCount: provider.foodItems.length,
+                                  itemBuilder: (context, index) {
+                                    return Stack(
+                                      alignment: Alignment(0, 0),
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.all(10),
+                                          child: Container(
+                                            height: provider.h,
+                                            width: provider.w,
                                             decoration: BoxDecoration(
-                                              image: DecorationImage(
-                                                image: AssetImage(
-                                                  e.image,
-                                                ),
-                                                fit: BoxFit.cover,
-                                              ),
-                                              color: Colors.amber,
-                                              shape: BoxShape.circle,
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                              color: Colors.white,
                                               boxShadow: [
                                                 BoxShadow(
-                                                  blurRadius: 10,
-                                                  offset: Offset(5, 5),
+                                                  blurRadius: 20,
                                                   color: Colors.grey,
-                                                )
+                                                  offset: Offset(5, 5),
+                                                ),
                                               ],
                                             ),
                                           ),
-                                          Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                "${e.name}",
-                                                style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 20,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            TweenAnimationBuilder(
+                                                tween: Tween(
+                                                  begin: 0.0,
+                                                  end: pi * 2,
                                                 ),
-                                              ),
-                                              const SizedBox(
-                                                height: 5,
-                                              ),
-                                              Text(
-                                                "${e.items_count} items",
-                                                style: TextStyle(
-                                                  color: Colors.grey,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 10,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          GestureDetector(
-                                            child: Container(
-                                              height: 60,
-                                              width: 60,
-                                              child: Icon(
-                                                Icons.arrow_forward_ios_rounded,
-                                                size: 20,
-                                                color: Colors.red,
-                                              ),
-                                              decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                color: Colors.white,
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                    color: Colors.grey,
-                                                    offset: Offset(
-                                                      5,
-                                                      5,
+                                                duration: Duration(seconds: 10),
+                                                builder: (context, val, _) {
+                                                  return Transform.rotate(
+                                                    angle: provider.IsRotating
+                                                        ? val
+                                                        : 0.0,
+                                                    child: GestureDetector(
+                                                      onTap: () {
+                                                        provider.changerotating(
+                                                            rotate: provider
+                                                                .IsRotating);
+                                                      },
+                                                      child: Container(
+                                                        height: 70,
+                                                        width: 70,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          image:
+                                                              DecorationImage(
+                                                            image: AssetImage(
+                                                              provider
+                                                                  .foodItems[
+                                                                      index]
+                                                                  .image,
+                                                            ),
+                                                            fit: BoxFit.cover,
+                                                          ),
+                                                          color: Colors.amber,
+                                                          shape:
+                                                              BoxShape.circle,
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              blurRadius: 10,
+                                                              offset:
+                                                                  Offset(5, 5),
+                                                              color:
+                                                                  Colors.grey,
+                                                            )
+                                                          ],
+                                                        ),
+                                                      ),
                                                     ),
-                                                    blurRadius: 10,
+                                                  );
+                                                }),
+                                            Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  "${provider.foodItems[index].name}",
+                                                  style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 20,
                                                   ),
-                                                ],
-                                              ),
+                                                ),
+                                                const SizedBox(
+                                                  height: 5,
+                                                ),
+                                                Text(
+                                                  "${provider.foodItems[index].items_count} items",
+                                                  style: TextStyle(
+                                                    color: Colors.grey,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 10,
+                                                  ),
+                                                ),
+                                              ],
                                             ),
-                                            onTap: () {
-                                              provider.changeSize(
-                                                  sizeh: provider.h + 1,
-                                                  sizew: provider.w + 1);
-                                              Navigator.of(context)
-                                                  .pushNamed("detail_screen");
-                                            },
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  );
-                                }).toList(),
-                              ],
-                            ),
-                          );
-                        }),
-                  ),
-                ],
-              )
-            ],
-          ),
+                                            GestureDetector(
+                                              child: Container(
+                                                height: 60,
+                                                width: 60,
+                                                child: Icon(
+                                                  Icons
+                                                      .arrow_forward_ios_rounded,
+                                                  size: 20,
+                                                  color: Colors.red,
+                                                ),
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  color: Colors.white,
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      color: Colors.grey,
+                                                      offset: Offset(
+                                                        5,
+                                                        5,
+                                                      ),
+                                                      blurRadius: 10,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              onTap: () {
+                                                provider.changeSize(
+                                                    sizeh: provider.h + 1,
+                                                    sizew: provider.w + 1);
+                                                Navigator.of(context).pushNamed(
+                                                    "detail_screen",
+                                                    arguments: index);
+                                              },
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      }),
+                ),
+              ],
+            )
+          ],
         ),
       ),
     );
   }
 }
+// ...provider.foodItems.map((e) {
+// return Stack(
+// alignment: Alignment(0, 0),
+// children: [
+// Padding(
+// padding: const EdgeInsets.all(10),
+// child: Container(
+// height: provider.h,
+// width: provider.w,
+// decoration: BoxDecoration(
+// borderRadius:
+// BorderRadius.circular(20),
+// color: Colors.white,
+// boxShadow: [
+// BoxShadow(
+// blurRadius: 20,
+// color: Colors.grey,
+// offset: Offset(5, 5),
+// ),
+// ],
+// ),
+// ),
+// ),
+// Row(
+// mainAxisAlignment:
+// MainAxisAlignment.spaceEvenly,
+// crossAxisAlignment:
+// CrossAxisAlignment.center,
+// children: [
+// TweenAnimationBuilder(
+// tween: Tween(
+// begin: 0.0,
+// end: pi * 2,
+// ),
+// duration:
+// Duration(seconds: 10),
+// builder: (context, val, _) {
+// return Transform.rotate(
+// angle:
+// provider.IsRotating
+// ? val
+//     : 0.0,
+// child: GestureDetector(
+// onTap: () {
+// provider.changerotating(
+// rotate: provider
+//     .IsRotating);
+// },
+// child: Container(
+// height: 70,
+// width: 70,
+// decoration:
+// BoxDecoration(
+// image:
+// DecorationImage(
+// image:
+// AssetImage(
+// e.image,
+// ),
+// fit: BoxFit
+//     .cover,
+// ),
+// color:
+// Colors.amber,
+// shape: BoxShape
+//     .circle,
+// boxShadow: [
+// BoxShadow(
+// blurRadius:
+// 10,
+// offset:
+// Offset(
+// 5, 5),
+// color: Colors
+//     .grey,
+// )
+// ],
+// ),
+// ),
+// ),
+// );
+// }),
+// Column(
+// mainAxisAlignment:
+// MainAxisAlignment.center,
+// crossAxisAlignment:
+// CrossAxisAlignment.start,
+// children: [
+// Text(
+// "${e.name}",
+// style: TextStyle(
+// color: Colors.black,
+// fontWeight:
+// FontWeight.bold,
+// fontSize: 20,
+// ),
+// ),
+// const SizedBox(
+// height: 5,
+// ),
+// Text(
+// "${e.items_count} items",
+// style: TextStyle(
+// color: Colors.grey,
+// fontWeight:
+// FontWeight.bold,
+// fontSize: 10,
+// ),
+// ),
+// ],
+// ),
+// GestureDetector(
+// child: Container(
+// height: 60,
+// width: 60,
+// child: Icon(
+// Icons
+//     .arrow_forward_ios_rounded,
+// size: 20,
+// color: Colors.red,
+// ),
+// decoration: BoxDecoration(
+// shape: BoxShape.circle,
+// color: Colors.white,
+// boxShadow: [
+// BoxShadow(
+// color: Colors.grey,
+// offset: Offset(
+// 5,
+// 5,
+// ),
+// blurRadius: 10,
+// ),
+// ],
+// ),
+// ),
+// onTap: () {
+// provider.changeSize(
+// sizeh: provider.h + 1,
+// sizew: provider.w + 1);
+// Navigator.of(context)
+//     .pushNamed(
+// "detail_screen",
+// arguments: "");
+// },
+// ),
+// ],
+// ),
+// ],
+// );
+// }).toList(),
