@@ -51,29 +51,31 @@ class _IntroScreenState extends State<IntroScreen> {
             CircularProgressIndicator(
               color: Colors.yellow.shade900,
             ),
-            TweenAnimationBuilder(
-              duration: Duration(seconds: 10),
-              tween: Tween(
-                begin: Alignment.bottomCenter,
-                end: Alignment.topCenter,
-              ),
-              builder: (context, val, _) {
-                return Align(
-                  alignment: val,
-                  child: Container(
-                    height: 100,
-                    width: 300,
-                    child: Text(
-                      "Food App",
-                      style: TextStyle(
-                        fontSize: 50,
-                        color: Colors.yellow.shade900,
-                        fontWeight: FontWeight.bold,
+            Expanded(
+              child: TweenAnimationBuilder(
+                duration: const Duration(seconds: 10),
+                tween: Tween(
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
+                ),
+                builder: (context, val, _) {
+                  return Align(
+                    alignment: val,
+                    child: Container(
+                      height: 100,
+                      width: 300,
+                      child: Text(
+                        "Food App",
+                        style: TextStyle(
+                          fontSize: 50,
+                          color: Colors.yellow.shade900,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ],
         ),
