@@ -5,9 +5,7 @@ class ItemProvider extends ChangeNotifier {
   double h = 100;
   double w = 250;
 
-  bool IsRotating = true;
-  changerotating({required bool rotate}) {
-    IsRotating == rotate;
+  changerotating() {
     notifyListeners();
   }
 
@@ -18,96 +16,127 @@ class ItemProvider extends ChangeNotifier {
   }
 
   List AllMenu = [
-    {
-      [
-        ItemModel(
-          items_count: 25,
-          name: "Margherita",
-          image: "assets/salad_image/margherita_pizza.png",
-        ),
-        ItemModel(
+    [
+      ItemModel(
+        items_count: 25,
+        name: "Margherita",
+        image: "assets/salad_image/margherita_pizza.png",
+      ),
+      ItemModel(
+        items_count: 30,
+        name: "pepperoni_pizza",
+        image: "assets/salad_image/pepperoni_pizza.png",
+      ),
+      ItemModel(
           items_count: 30,
-          name: "pepperoni_pizza",
-          image: "assets/salad_image/pepperoni_pizza.png",
-        ),
-        ItemModel(
-            items_count: 30,
-            name: "Desserts",
-            image: "assets/salad_image/shushi_pizza.jpg"),
+          name: "Desserts",
+          image: "assets/salad_image/shushi_pizza.jpg"),
+    ],
+    [
+      ItemModel(
+        items_count: 25,
+        name: "Rice with many vegetables",
+        image: "assets/salad_image/pulav.png",
+      ),
+      ItemModel(
+        items_count: 30,
+        name: "Chopped Salad",
+        image: "assets/salad_image/chopped_salad.png",
+      ),
+      ItemModel(
+          items_count: 30,
+          name: "Turkey Salad",
+          image: "assets/salad_image/turkey.jpg"),
+    ],
+    [
+      ItemModel(
+        items_count: 25,
+        name: "Chocolate Cake",
+        image: "assets/salad_image/chocolate_cake.png",
+      ),
+      ItemModel(
+        items_count: 30,
+        name: "Browny Cake",
+        image: "assets/salad_image/browny_cake.png",
+      ),
+      ItemModel(
+          items_count: 30,
+          name: "Puddings",
+          image: "assets/salad_image/pudding.png"),
+    ],
+    [
+      ItemModel(
+        items_count: 25,
+        name: "Lasagna Pasta",
+        image: "assets/salad_image/lasagna.png",
+      ),
+      ItemModel(
+        items_count: 30,
+        name: "Penne Pasta",
+        image: "assets/salad_image/penne.png",
+      ),
+      ItemModel(
+          items_count: 30,
+          name: "Spaghetti",
+          image: "assets/salad_image/spaghetti.png"),
+    ],
+    [
+      ItemModel(
+        items_count: 25,
+        name: "Blueberry Beverage ",
+        image: "assets/salad_image/blueberry.png",
+      ),
+      ItemModel(
+        items_count: 30,
+        name: "Orange Juice",
+        image: "assets/salad_image/orange_juice.png",
+      ),
+      ItemModel(
+          items_count: 30,
+          name: "Strawberry Juice",
+          image: "assets/salad_image/strawberry_juice.png"),
+    ],
+  ];
+
+  List myMenu = [
+    {
+      "Item": [
+        {
+          "items_count": 25,
+          "name": "Margherita",
+          "image": "assets/pizza_image/margherita_pizza.png",
+        },
+        {
+          "items_count": 30,
+          "name": "pepperoni_pizza",
+          "image": "assets/pizza_image/pepperoni_pizza.png",
+        },
+        {
+          "items_count": 30,
+          "name": "Desserts",
+          "image": "assets/pizza_image/shushi_pizza.jpg",
+        }
       ]
     },
     {
-      [
-        ItemModel(
-          items_count: 25,
-          name: "Rice with many vegetables",
-          image: "assets/salad_image/pulav.png",
-        ),
-        ItemModel(
-          items_count: 30,
-          name: "Chopped Salad",
-          image: "assets/salad_image/chopped_salad.png",
-        ),
-        ItemModel(
-            items_count: 30,
-            name: "Turkey Salad",
-            image: "assets/salad_image/turkey.jpg"),
+      "Item": [
+        {
+          "items_count": 25,
+          "name": "Rice with many vegetables",
+          "image": "assets/salad_image/pulav.png",
+        },
+        {
+          "items_count": 30,
+          "name": "Chopped Salad",
+          "image": "assets/salad_image/chopped_salad.png",
+        },
+        {
+          "items_count": 30,
+          "name": "Turkey Salad",
+          "image": "assets/salad_image/turkey.jpg",
+        }
       ]
-    },
-    {
-      [
-        ItemModel(
-          items_count: 25,
-          name: "Chocolate Cake",
-          image: "assets/salad_image/chocolate_cake.png",
-        ),
-        ItemModel(
-          items_count: 30,
-          name: "Browny Cake",
-          image: "assets/salad_image/browny_cake.png",
-        ),
-        ItemModel(
-            items_count: 30,
-            name: "Puddings",
-            image: "assets/salad_image/pudding.png"),
-      ]
-    },
-    {
-      [
-        ItemModel(
-          items_count: 25,
-          name: "Lasagna Pasta",
-          image: "assets/salad_image/lasagna.png",
-        ),
-        ItemModel(
-          items_count: 30,
-          name: "Penne Pasta",
-          image: "assets/salad_image/penne.png",
-        ),
-        ItemModel(
-            items_count: 30,
-            name: "Spaghetti",
-            image: "assets/salad_image/spaghetti.png"),
-      ]
-    },
-    {
-      [
-        ItemModel(
-          items_count: 25,
-          name: "Blueberry Beverage ",
-          image: "assets/salad_image/blueberry.png",
-        ),
-        ItemModel(
-          items_count: 30,
-          name: "Orange Juice",
-          image: "assets/salad_image/orange_juice.png",
-        ),
-        ItemModel(
-            items_count: 30,
-            name: "Strawberry Juice",
-            image: "assets/salad_image/strawberry_juice.png"),
-      ]
-    },
+    }
   ];
   List<ItemModel> foodItems = [
     ItemModel(

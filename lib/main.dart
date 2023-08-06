@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/provider/item_list_provider.dart';
+import 'package:e_commerce_app/view/screen/ball_screen.dart';
 import 'package:e_commerce_app/view/screen/detail_screen.dart';
 import 'package:e_commerce_app/view/screen/home_page.dart';
 import 'package:e_commerce_app/view/screen/splash_screen.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         "splash_screen": (context) => IntroScreen(),
         "/": (context) => HomePage(),
         "detail_screen": (context) => FoodDetailsPage(),
+        "ball_screen": (context) => BallScreen(),
       },
     );
   }

@@ -25,31 +25,30 @@ class _IntroScreenState extends State<IntroScreen> {
     return Scaffold(
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TweenAnimationBuilder(
-              tween: Tween(begin: 0.0, end: pi * 2),
-              duration: Duration(seconds: 15),
-              builder: (context, val, _) {
-                return Transform.rotate(
-                  angle: val,
-                  child: Container(
-                    height: 250,
-                    width: double.infinity,
-                    margin: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: const DecorationImage(
-                        image: AssetImage("assets/food_image/pizza1.png"),
-                        fit: BoxFit.fitHeight,
+            Expanded(
+              child: TweenAnimationBuilder(
+                tween: Tween(begin: 0.0, end: pi * 2),
+                duration: Duration(seconds: 15),
+                builder: (context, val, _) {
+                  return Transform.rotate(
+                    angle: val,
+                    child: Container(
+                      height: 250,
+                      width: double.infinity,
+                      margin: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: const DecorationImage(
+                          image: AssetImage("assets/food_image/pizza1.png"),
+                          fit: BoxFit.fitHeight,
+                        ),
                       ),
                     ),
-                  ),
-                );
-              },
-            ),
-            CircularProgressIndicator(
-              color: Colors.yellow.shade900,
+                  );
+                },
+              ),
             ),
             Expanded(
               child: TweenAnimationBuilder(

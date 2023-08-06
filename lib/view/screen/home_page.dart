@@ -16,68 +16,69 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Consumer<ItemProvider>(
       builder: (context, provider, child) => Scaffold(
-        body: Column(
-          children: [
-            Stack(
-              children: [
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        Container(
-                          height: 700,
-                          width: 110,
-                          color: Colors.red,
-                        ),
-                      ],
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Stack(
+                children: [
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 750,
+                            width: 110,
+                            color: Colors.red,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                Center(
-                  child: TweenAnimationBuilder(
-                      duration: Duration(milliseconds: 600),
-                      curve: Curves.bounceOut,
-                      tween: Tween(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter),
-                      builder: (context, val, _) {
-                        return Align(
-                          alignment: val,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(50),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    IconButton(
-                                      onPressed: () {},
-                                      icon: Icon(
-                                        Icons.format_list_bulleted,
-                                        color: Colors.white,
-                                        size: 30,
-                                      ),
-                                    ),
-                                    IconButton(
-                                      onPressed: () {},
-                                      icon: Icon(
-                                        Icons.shopping_basket_outlined,
-                                        color: Colors.grey,
-                                        size: 30,
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(50),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.format_list_bulleted,
+                                color: Colors.white,
+                                size: 30,
                               ),
-                              Container(
-                                height: 500,
-                                width: 250,
-                                child: ListView.builder(
-                                  itemCount: provider.foodItems.length,
-                                  itemBuilder: (context, index) {
-                                    return Stack(
+                            ),
+                            IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.shopping_basket_outlined,
+                                color: Colors.grey,
+                                size: 30,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        height: 500,
+                        width: 250,
+                        child: ListView.builder(
+                          itemCount: provider.foodItems.length,
+                          itemBuilder: (context, index) {
+                            return TweenAnimationBuilder(
+                                duration: Duration(
+                                  milliseconds: 3500,
+                                ),
+                                tween: Tween(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                ),
+                                builder: (context, val, _) {
+                                  return Transform.translate(
+                                    offset: Offset(100, 0),
+                                    child: Stack(
                                       alignment: Alignment(0, 0),
                                       children: [
                                         Padding(
@@ -113,14 +114,11 @@ class _HomePageState extends State<HomePage> {
                                                 duration: Duration(seconds: 10),
                                                 builder: (context, val, _) {
                                                   return Transform.rotate(
-                                                    angle: provider.IsRotating
-                                                        ? val
-                                                        : 0.0,
+                                                    angle: val,
                                                     child: GestureDetector(
                                                       onTap: () {
-                                                        provider.changerotating(
-                                                            rotate: provider
-                                                                .IsRotating);
+                                                        provider
+                                                            .changerotating();
                                                       },
                                                       child: Container(
                                                         height: 70,
@@ -218,18 +216,24 @@ class _HomePageState extends State<HomePage> {
                                           ],
                                         ),
                                       ],
-                                    );
-                                  },
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
-                      }),
-                ),
-              ],
-            )
-          ],
+                                    ),
+                                  );
+                                });
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              )
+            ],
+          ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.of(context).pushNamed("ball_screen");
+          },
+          child: Icon(Icons.add),
         ),
       ),
     );
