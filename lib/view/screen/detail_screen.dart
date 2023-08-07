@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -11,9 +13,11 @@ class FoodDetailsPage extends StatefulWidget {
 }
 
 class _FoodDetailsPageState extends State<FoodDetailsPage>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late AnimationController animationController;
+  late AnimationController arrowanimationController;
   late Animation flex;
+  late Animation rotate;
 
   @override
   void initState() {
@@ -23,14 +27,24 @@ class _FoodDetailsPageState extends State<FoodDetailsPage>
       vsync: this,
       duration: const Duration(milliseconds: 800),
     );
+    arrowanimationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 800),
+    );
 
-    flex = IntTween(begin: 1, end: 10).animate(
+    flex = IntTween(begin: 1, end: 20).animate(
       CurvedAnimation(
         parent: animationController,
         curve: Curves.easeInOut,
       ),
     );
 
+    rotate = Tween(begin: 0.0, end: pi / 2).animate(
+      CurvedAnimation(
+        parent: animationController,
+        curve: Curves.easeInOut,
+      ),
+    );
     animationController.forward();
   }
 
@@ -81,7 +95,8 @@ class _FoodDetailsPageState extends State<FoodDetailsPage>
                             children: [
                               IconButton(
                                 onPressed: () {
-                                  Navigator.of(context).pop();
+                                  provider.w;
+                                  Navigator.of(context).pushNamed("/");
                                   provider.changeSize(
                                       sizeh: provider.h - 1,
                                       sizew: provider.w - 1);
@@ -169,11 +184,8 @@ class _FoodDetailsPageState extends State<FoodDetailsPage>
                                           style: TextStyle(
                                             color: Colors.black,
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 20,
+                                            fontSize: 15,
                                           ),
-                                        ),
-                                        const SizedBox(
-                                          height: 5,
                                         ),
                                         Text(
                                           "${provider.myMenu[indexData]['Item'][index]['items_count']} items",
@@ -185,19 +197,43 @@ class _FoodDetailsPageState extends State<FoodDetailsPage>
                                         ),
                                       ],
                                     ),
-                                    FloatingActionButton(
-                                      onPressed: () {
-                                        provider.changeSize(
-                                            sizeh: provider.h + 1,
-                                            sizew: provider.w + 1);
-                                      },
-                                      child: Icon(
-                                        Icons.arrow_forward_ios,
-                                        size: 15,
-                                        color: Colors.red,
-                                      ),
-                                      backgroundColor: Colors.white,
-                                    )
+                                    AnimatedBuilder(
+                                        animation: arrowanimationController,
+                                        builder: (context, val) {
+                                          return GestureDetector(
+                                            child: Transform.rotate(
+                                              angle: rotate.value,
+                                              child: Container(
+                                                height: 60,
+                                                width: 60,
+                                                child: Icon(
+                                                  Icons
+                                                      .arrow_forward_ios_rounded,
+                                                  size: 20,
+                                                  color: Colors.red,
+                                                ),
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  color: Colors.white,
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      color: Colors.grey,
+                                                      offset: Offset(
+                                                        5,
+                                                        5,
+                                                      ),
+                                                      blurRadius: 10,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                            onTap: () {
+                                              arrowanimationController
+                                                  .forward();
+                                            },
+                                          );
+                                        }),
                                   ],
                                 ),
                               ],

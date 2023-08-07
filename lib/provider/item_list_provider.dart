@@ -114,7 +114,7 @@ class ItemProvider extends ChangeNotifier {
         {
           "items_count": 30,
           "name": "Desserts",
-          "image": "assets/pizza_image/shushi_pizza.jpg",
+          "image": "assets/pizza_image/shushi_pizza.png",
         }
       ]
     },
@@ -122,7 +122,7 @@ class ItemProvider extends ChangeNotifier {
       "Item": [
         {
           "items_count": 25,
-          "name": "Rice with many vegetables",
+          "name": "Rice with\nmany vegetables",
           "image": "assets/salad_image/pulav.png",
         },
         {
@@ -142,17 +142,17 @@ class ItemProvider extends ChangeNotifier {
         {
           "items_count": 25,
           "name": "Chocolate Cake",
-          "image": "assets/salad_image/chocolate_cake.png",
+          "image": "assets/desserts_image/chocolate_cake.png",
         },
         {
           "items_count": 30,
           "name": "Browny Cake",
-          "image": "assets/salad_image/browny_cake.png",
+          "image": "assets/desserts_image/browny_cake.png",
         },
         {
           "items_count": 30,
           "name": "Puddings",
-          "image": "assets/salad_image/pudding.png"
+          "image": "assets/desserts_image/pudding.png"
         }
       ]
     },
@@ -161,17 +161,17 @@ class ItemProvider extends ChangeNotifier {
         {
           "items_count": 25,
           "name": "Lasagna Pasta",
-          "image": "assets/salad_image/lasagna.png",
+          "image": "assets/pasta_image/lasagna.png",
         },
         {
           "items_count": 30,
           "name": "Penne Pasta",
-          "image": "assets/salad_image/penne.png",
+          "image": "assets/pasta_image/penne.png",
         },
         {
           "items_count": 30,
           "name": "Spaghetti",
-          "image": "assets/salad_image/spaghetti.png"
+          "image": "assets/pasta_image/spaghetti.png"
         }
       ]
     },
@@ -180,17 +180,17 @@ class ItemProvider extends ChangeNotifier {
         {
           "items_count": 25,
           "name": "Blueberry Beverage ",
-          "image": "assets/salad_image/blueberry.png",
+          "image": "assets/beverages_image/blueberry.png",
         },
         {
           "items_count": 30,
           "name": "Orange Juice",
-          "image": "assets/salad_image/orange_juice.png",
+          "image": "assets/beverages_image/orange_juice.png",
         },
         {
           "items_count": 30,
           "name": "Strawberry Juice",
-          "image": "assets/salad_image/strawberry_juice.png"
+          "image": "assets/beverages_image/strawberry_juice.png"
         }
       ]
     },
