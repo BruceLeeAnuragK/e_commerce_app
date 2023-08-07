@@ -10,10 +10,36 @@ class FoodDetailsPage extends StatefulWidget {
   State<FoodDetailsPage> createState() => _FoodDetailsPageState();
 }
 
-class _FoodDetailsPageState extends State<FoodDetailsPage> {
+class _FoodDetailsPageState extends State<FoodDetailsPage>
+    with SingleTickerProviderStateMixin {
+  late AnimationController animationController;
+  late Animation flex;
+
+  @override
+  void initState() {
+    super.initState();
+
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 800),
+    );
+
+    flex = IntTween(begin: 1, end: 10).animate(
+      CurvedAnimation(
+        parent: animationController,
+        curve: Curves.easeInOut,
+      ),
+    );
+
+    animationController.forward();
+  }
+
   @override
   Widget build(BuildContext context) {
     int indexData = ModalRoute.of(context)!.settings.arguments as int;
+
+    Size size = MediaQuery.of(context).size;
+
     return Consumer<ItemProvider>(
       builder: (context, provider, child) => Scaffold(
         body: SingleChildScrollView(
@@ -21,35 +47,28 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
             children: [
               Stack(
                 children: [
-                  Column(
-                    children: [
-                      Row(
-                        children: [
-                          Container(
-                            height: 750,
-                            width: 110,
-                            color: Colors.red,
-                          ),
-                          TweenAnimationBuilder(
-                            duration: Duration(milliseconds: 2000),
-                            tween: Tween(
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight,
+                  Container(
+                    height: size.height,
+                    width: size.width,
+                    child: Row(
+                      children: [
+                        AnimatedBuilder(
+                          animation: animationController,
+                          builder: (context, val) => Expanded(
+                            flex: flex.value,
+                            child: Container(
+                              color: Colors.red,
                             ),
-                            builder: (context, val, _) {
-                              return Align(
-                                alignment: val,
-                                child: Container(
-                                  height: 750,
-                                  width: 110,
-                                  color: Colors.red,
-                                ),
-                              );
-                            },
                           ),
-                        ],
-                      ),
-                    ],
+                        ),
+                        Expanded(
+                          flex: 10,
+                          child: Container(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   Center(
                     child: Column(

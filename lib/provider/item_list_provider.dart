@@ -136,7 +136,64 @@ class ItemProvider extends ChangeNotifier {
           "image": "assets/salad_image/turkey.jpg",
         }
       ]
-    }
+    },
+    {
+      "Item": [
+        {
+          "items_count": 25,
+          "name": "Chocolate Cake",
+          "image": "assets/salad_image/chocolate_cake.png",
+        },
+        {
+          "items_count": 30,
+          "name": "Browny Cake",
+          "image": "assets/salad_image/browny_cake.png",
+        },
+        {
+          "items_count": 30,
+          "name": "Puddings",
+          "image": "assets/salad_image/pudding.png"
+        }
+      ]
+    },
+    {
+      "Item": [
+        {
+          "items_count": 25,
+          "name": "Lasagna Pasta",
+          "image": "assets/salad_image/lasagna.png",
+        },
+        {
+          "items_count": 30,
+          "name": "Penne Pasta",
+          "image": "assets/salad_image/penne.png",
+        },
+        {
+          "items_count": 30,
+          "name": "Spaghetti",
+          "image": "assets/salad_image/spaghetti.png"
+        }
+      ]
+    },
+    {
+      "Item": [
+        {
+          "items_count": 25,
+          "name": "Blueberry Beverage ",
+          "image": "assets/salad_image/blueberry.png",
+        },
+        {
+          "items_count": 30,
+          "name": "Orange Juice",
+          "image": "assets/salad_image/orange_juice.png",
+        },
+        {
+          "items_count": 30,
+          "name": "Strawberry Juice",
+          "image": "assets/salad_image/strawberry_juice.png"
+        }
+      ]
+    },
   ];
   List<ItemModel> foodItems = [
     ItemModel(

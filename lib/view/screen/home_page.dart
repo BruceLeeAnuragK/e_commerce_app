@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
                       child: Column(
                         children: [
                           Container(
-                            height: 750,
+                            height: 900,
                             width: 110,
                             color: Colors.red,
                           ),
@@ -62,22 +62,22 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       Container(
-                        height: 500,
-                        width: 250,
+                        height: 800,
+                        width: 350,
                         child: ListView.builder(
                           itemCount: provider.foodItems.length,
                           itemBuilder: (context, index) {
                             return TweenAnimationBuilder(
                                 duration: Duration(
-                                  milliseconds: 3500,
+                                  milliseconds: 2000,
                                 ),
                                 tween: Tween(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
+                                  begin: -300.0,
+                                  end: 0.0,
                                 ),
                                 builder: (context, val, _) {
                                   return Transform.translate(
-                                    offset: Offset(100, 0),
+                                    offset: Offset(0, val),
                                     child: Stack(
                                       alignment: Alignment(0, 0),
                                       children: [
