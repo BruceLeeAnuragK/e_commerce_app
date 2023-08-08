@@ -108,7 +108,7 @@ class ItemProvider extends ChangeNotifier {
         },
         {
           "items_count": 30,
-          "name": "pepperoni_pizza",
+          "name": "Pepperoni Pizza",
           "image": "assets/pizza_image/pepperoni_pizza.png",
         },
         {

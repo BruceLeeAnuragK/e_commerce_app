@@ -53,7 +53,6 @@ class _FoodDetailsPageState extends State<FoodDetailsPage>
     int indexData = ModalRoute.of(context)!.settings.arguments as int;
 
     Size size = MediaQuery.of(context).size;
-
     return Consumer<ItemProvider>(
       builder: (context, provider, child) => Scaffold(
         body: SingleChildScrollView(

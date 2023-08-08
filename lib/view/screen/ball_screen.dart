@@ -7,7 +7,52 @@ class BallScreen extends StatefulWidget {
   State<BallScreen> createState() => _BallScreenState();
 }
 
-class _BallScreenState extends State<BallScreen> {
+class _BallScreenState extends State<BallScreen> with TickerProviderStateMixin {
+  late AnimationController animationController;
+  late AnimationController flexanimationController;
+  late AnimationController slideanimationController;
+  late Animation slide;
+  late Animation flex;
+  @override
+  void initState() {
+    super.initState();
+    animationController = AnimationController(
+      vsync: this,
+      duration: Duration(
+        milliseconds: 5000,
+      ),
+    );
+    flexanimationController = AnimationController(
+      vsync: this,
+      duration: Duration(
+        milliseconds: 1000,
+      ),
+    );
+    slideanimationController = AnimationController(
+      vsync: this,
+      duration: Duration(
+        milliseconds: 1000,
+      ),
+    );
+
+    flex = IntTween(begin: 1, end: 20).animate(
+      CurvedAnimation(
+        parent: flexanimationController,
+        curve: Curves.easeInOut,
+      ),
+    );
+
+    slide = Tween(
+      begin: -300,
+      end: 0.0,
+    ).animate(
+      CurvedAnimation(
+          parent: slideanimationController, curve: Curves.easeInOut),
+    );
+    slideanimationController.forward();
+    flexanimationController.forward();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,11 +63,15 @@ class _BallScreenState extends State<BallScreen> {
       body: Stack(
         alignment: Alignment.center,
         children: [
-          Container(
-            height: 300,
-            width: 300,
-            color: Colors.red,
-          ),
+          AnimatedBuilder(
+              animation: animationController,
+              builder: (context, val) {
+                return Container(
+                  height: 300,
+                  width: 300,
+                  color: Colors.red,
+                );
+              }),
           TweenAnimationBuilder(
             tween: Tween(
               begin: Alignment.topCenter,
