@@ -1,8 +1,9 @@
 import 'dart:math';
 
-import 'package:e_commerce_app/provider/item_list_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../../controller/item_list_provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

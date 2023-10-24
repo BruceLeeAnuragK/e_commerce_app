@@ -15,7 +15,7 @@ class _IntroScreenState extends State<IntroScreen> {
     Future.delayed(
       const Duration(seconds: 5),
       () {
-        Navigator.of(context).pushNamed("/");
+        Navigator.of(context).pushNamed("login_page");
       },
     );
   }

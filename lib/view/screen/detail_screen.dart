@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../provider/item_list_provider.dart';
+import '../../controller/item_list_provider.dart';
 
 class FoodDetailsPage extends StatefulWidget {
   const FoodDetailsPage({Key? key}) : super(key: key);
