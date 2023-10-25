@@ -92,20 +92,21 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                     color: Colors.white, // set the desired color
                   ),
                   child: AnimatedBuilder(
-                      animation: offsetcontroller,
-                      builder: (context, child) {
-                        return Transform.translate(
-                          offset: Offset(0, -50 * offsetcontroller.value),
-                          child: Container(
-                            width: 30, // set the desired width
-                            height: 30, // set the desired height
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.black, // set the desired color
-                            ),
+                    animation: offsetcontroller,
+                    builder: (context, child) {
+                      return Transform.translate(
+                        offset: Offset(0, -50 * offsetcontroller.value),
+                        child: Container(
+                          width: 30, // set the desired width
+                          height: 30, // set the desired height
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.black, // set the desired color
                           ),
-                        );
-                      }),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ],
             ),
