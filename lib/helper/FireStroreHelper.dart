@@ -8,7 +8,7 @@ class FireStoreHelper {
   static final FireStoreHelper storeHelper = FireStoreHelper._();
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  String collection = "User";
+  String collection = "user";
 
   String colId = "Id";
   String colName = "name";
@@ -30,5 +30,9 @@ class FireStoreHelper {
 
   getUser({required String username}) {
     firestore.collection(collection).doc(username.toString()).snapshots();
+  }
+
+  Stream<QuerySnapshot<Map<String, dynamic>>> getAllUser() {
+    return firestore.collection(collection).snapshots();
   }
 }
