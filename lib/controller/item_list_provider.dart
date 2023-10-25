@@ -221,4 +221,14 @@ class ItemProvider extends ChangeNotifier {
       image: "assets/food_image/beverages.png",
     ),
   ];
+
+  updateEyeVisibility(
+      {required int textLength,
+      required AnimationController animationController}) {
+    if (textLength > 0) {
+      animationController.forward();
+    } else {
+      animationController.reverse();
+    }
+  }
 }
